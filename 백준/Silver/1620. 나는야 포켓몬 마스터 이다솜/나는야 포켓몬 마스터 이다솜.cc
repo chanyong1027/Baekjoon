@@ -1,29 +1,23 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 int n,m;
 string s;
-map<string, int> mp;
-map<int, string> mp2;
-int main(){  
- ios_base::sync_with_stdio(false);
- cin.tie(NULL);
- cin >> n >> m;
- for(int i=1;i<=n;i++){
- 	cin >> s;
- 	mp[s] = i;
-  	mp2[i] = s;
- }
- 
- for(int i=0;i<m;i++){
-  	cin >> s;
-  	if((s[0] >= 'a' && s[0] <= 'z') || (s[0] >= 'A' && s[0] <= 'Z')){
-  		cout << mp[s] << "\n";
-	  }
-	else{
-		int num = atoi(s.c_str());
-		cout << mp2[num] << "\n";
+map<int,string> mp;
+map<string,int> mp2;
+int main(){
+    cin.tie(NULL); cout.tie(NULL);
+	cin >> n >> m;
+	for(int i=0;i<n;i++){
+		cin >> s;
+		mp[i+1] = s;
+		mp2[s] = i+1;
 	}
-  }
- 
- return 0;
+	for(int i=0;i<m;i++){
+		cin >> s;
+		if(atoi(s.c_str()) == 0){
+			cout << mp2[s] << '\n';
+		}else{
+			cout << mp[atoi(s.c_str())] << '\n';
+		}
+	}
 }
